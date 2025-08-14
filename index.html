@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>JobPortal — GitHub Pages Preview</title>
+<link rel="icon" href="./assets/logo.svg"/>
+<link rel="stylesheet" href="./styles.css"/>
+</head><body>
+<header class="header">
+  <div class="container row spread">
+    <a href="#/home" class="brand"><img src="./assets/logo.svg" alt="logo"/><span>JobPortal</span></a>
+    <nav class="nav"><a href="#/jobs">Jobs</a><a href="#/resumes">Resumes</a><a href="#/employer">Employer</a><a href="#/admin">Admin</a></nav>
+    <div class="row gap"><select id="lang" class="input sm"><option>English</option><option>Español</option><option>Français</option><option>हिन्दी</option></select>
+      <a class="btn ghost sm">Post a job</a><a class="btn primary" href="#/jobs">Sign in</a></div>
+  </div><div class="accentbar"></div>
+</header>
+<main class="container pad">
+  <section id="view-home" class="hidden">
+    <div class="hero card"><h1>Find your next role, faster.</h1><p class="muted">A modern minimal job portal with global reach.</p>
+      <div class="stack"><input id="gq" class="input" placeholder="Search jobs by title, company or skill"/><input id="gl" class="input" placeholder="Location (city, country)"/>
+        <a id="gbtn" class="btn primary" href="#/jobs">Search</a></div><div class="tiny muted">Languages: English • Español • Français • हिन्दी</div></div>
+    <div class="grid3"><div class="card"><h3>Engineering</h3><p class="muted">React, Node, Cloud</p><a href="#/jobs" class="btn ghost mt">Browse →</a></div>
+      <div class="card"><h3>Sales</h3><p class="muted">B2B, CRM, Growth</p><a href="#/jobs" class="btn ghost mt">Browse →</a></div>
+      <div class="card"><h3>Analytics</h3><p class="muted">SQL, Python, BI</p><a href="#/jobs" class="btn ghost mt">Browse →</a></div></div>
+  </section>
+  <section id="view-jobs" class="hidden">
+    <div class="gridcols">
+      <aside class="sidebar card"><h3>Filters</h3><label class="tiny muted">Keywords</label><input id="kw" class="input" placeholder="e.g., React, Sales, Python"/>
+        <details class="acc"><summary>Location</summary><div class="accb tiny muted">Bengaluru, Mumbai, Remote…</div></details>
+        <details class="acc"><summary>Experience</summary><div class="accb tiny muted">0–2, 2–5, 5–10…</div></details>
+        <details class="acc"><summary>Salary</summary><div class="accb tiny muted">Ranges</div></details>
+        <details class="acc"><summary>Industry</summary><div class="accb tiny muted">IT/Software, SaaS…</div></details>
+        <details class="acc"><summary>Functional Area</summary><div class="accb tiny muted">Engineering, Sales, Data…</div></details>
+      </aside>
+      <section><div class="row spread vcenter mb"><h2>Jobs <span id="qe" class="muted normal"></span></h2><div id="cnt" class="tiny muted">0 results</div></div>
+        <div id="results" class="stack"></div></section>
+    </div>
+  </section>
+  <section id="view-job" class="hidden"><div id="jobContainer" class="stack"></div></section>
+  <section id="view-resumes" class="hidden">
+    <div class="gridcols"><aside class="sidebar card"><h3>Resume Search</h3><input id="rsKw" class="input" placeholder="Skills, title, company"/>
+      <details class="acc"><summary>Experience</summary><div class="accb tiny muted">ranges</div></details><details class="acc"><summary>Location</summary><div class="accb tiny muted">cities</div></details></aside>
+      <section class="relative"><div class="row spread vcenter mb"><h2>Candidates <span id="rsEcho" class="muted normal"></span></h2><div id="rsCnt" class="tiny muted">0 results</div></div>
+        <div id="rsResults" class="stack"></div><div id="panel" class="panel"><div class="ph"><strong>Resume Preview</strong><button id="panelClose" class="btn ghost sm">Close</button></div><div id="panelBody" class="panelBody"></div></div></section></div>
+  </section>
+  <section id="view-employer" class="hidden">
+    <div class="grid2"><div class="card"><h2>Jobs & Responses</h2><div class="stack smgap">
+      <a class="btn ghost spread">Post a Hot Vacancy <span>→</span></a><a class="btn ghost spread">Post a Classified <span>→</span></a>
+      <a class="btn ghost spread" href="#/employer/jobs">Manage Jobs & Responses <span>→</span></a></div></div>
+      <div class="card"><h2>Database</h2><div class="stack smgap">
+      <a class="btn ghost spread" href="#/resumes">Search Resumes <span>→</span></a><a class="btn ghost spread">Send Emails <span>→</span></a>
+      <a class="btn ghost spread">Manage Searches <span>→</span></a><a class="btn ghost spread">Folders <span>→</span></a></div></div></div>
+  </section>
+  <section id="view-employer-jobs" class="hidden">
+    <div class="gridcols"><aside class="sidebar card"><h3>Filters</h3><input id="ejKw" class="input" placeholder="Search jobs"/><details class="acc"><summary>Status</summary><div class="accb tiny muted">Open/Closed</div></details></aside>
+      <section><div class="row spread vcenter mb"><h2>Manage Jobs & Responses</h2><a class="btn primary">Post Job</a></div><div id="ejResults" class="stack"></div></section></div>
+  </section>
+  <section id="view-admin" class="hidden">
+    <div class="grid2"><div class="card"><h2>Feature Flags (Preview)</h2><div class="stack smgap" id="flags"></div>
+      <div class="row gap mt"><input id="flagKey" class="input" placeholder="e.g., whatsapp_notifications"/>
+      <label class="row gap vcenter tiny"><input id="flagVal" type="checkbox"/> Enabled</label><button id="flagAdd" class="btn primary" type="button">Add/Update</button></div></div>
+      <div class="card"><h2>Brand</h2><label class="tiny muted">Logo</label><input id="logoInput" type="file" accept="image/*"/><p class="tiny muted">Preview only (stored in your browser).</p></div></div>
+  </section>
+</main>
+<footer class="footer"><div class="container row spread tiny muted"><span>© <span id="yr"></span> JobPortal</span><span>Blue + Orange • Light</span></div></footer>
+<script src="./app.js"></script>
+</body></html>
