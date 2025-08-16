@@ -1,20 +1,34 @@
+# GrowIndia Job Portal — MVP Scaffold
 
-# JobPortal — GitHub Pages Preview
+This repo is a clean MVP scaffold wired for Supabase. Upload to GitHub, deploy on Vercel.
 
-A clean, minimal SPA preview of your job portal. No backend needed.
+## 1) Environment Variables
+Set these in **Vercel → Project → Settings → Environment Variables** (All Environments):
 
-## Publish
-1. Create a repo (e.g., `jobportal-preview`) under `rajiv-creator`
-2. Upload these files to the repo **root** (so `index.html` is at top level)
-3. Repo → Settings → Pages → Source: **Deploy from a branch** → **main** → **/(root)** → Save
-4. Open: `https://rajiv-creator.github.io/<repo-name>/`
+- `NEXT_PUBLIC_SUPABASE_URL` = `https://<your-ref>.supabase.co`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` = anon public key
+- `SUPABASE_SERVICE_ROLE_KEY` = service role key (server-only)
 
-## Routes
-- `#/jobs` — list with filters, date, save/share
-- `#/job?id=1` — job details with apply CTA, related jobs
-- `#/resumes` — search, results, right-side preview
-- `#/employer` — dashboard
-- `#/employer/jobs` — manage jobs list
-- `#/admin` — feature flags + logo preview (stored locally)
+## 2) Supabase
+- Turn **Email** provider ON (Authentication → Providers).
+- Ensure tables exist: `jobs`, `applications`, `candidates`, `companies` (your schema).
+- RLS policies added as we discussed.
 
-When you're ready, we can port this into the Next.js + Prisma app and deploy on Vercel.
+## 3) Run locally (optional)
+```bash
+npm i
+npm run dev
+```
+Open http://localhost:3000
+
+## 4) Pages
+- `/` → redirects to `/jobs`
+- `/jobs` → list of jobs (reads from Supabase)
+- `/jobs/[id]` → job details
+- `/login` → email magic link
+- `/apply?job=<id>` → apply to a job (requires login)
+
+> **Note:** The `apply` flow uses the public anon client + RLS. It assumes your `candidates.id` equals the logged-in `auth.users.id`. If your schema differs, adjust in `app/apply/page.jsx` (the insert payload).
+
+## 5) Styling
+Tailwind pre-wired with a minimal, clean UI (light mode).
