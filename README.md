@@ -33,3 +33,4 @@ Open http://localhost:3000
 ## 5) Styling
 Tailwind pre-wired with a minimal, clean UI (light mode).
 
+
