@@ -1,4 +1,7 @@
+import * as Sentry from '@sentry/nextjs';
+
 export async function GET() {
-  // This will be captured by Sentry (server error)
-  throw new Error('Server blew up on purpose!');
+  Sentry.setTag('where', 'api/boom');
+  Sentry.setContext('details', { note: 'Intentional server error for Sentry' });
+  throw new Error('Boom from /api/boom');
 }
