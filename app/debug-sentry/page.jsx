@@ -1,16 +1,19 @@
-"use client";
+'use client';
 
-export default function DebugSentry() {
+export default function DebugSentryPage() {
   return (
-    <button
-      onClick={() => {
-        // Intentional client error
-        // eslint-disable-next-line no-undef
-        window.__boom.crash();
-      }}
-      style={{ padding: 10, border: "1px solid #ccc" }}
-    >
-      Throw Client Error
-    </button>
+    <main style={{ padding: 32 }}>
+      <h1>GrowIndia Jobs</h1>
+      <button
+        onClick={() => {
+          // This will be captured by Sentry (client error)
+          throw new Error('Test client error from /debug-sentry');
+        }}
+        style={{ fontSize: 20, padding: '12px 16px' }}
+      >
+        Throw Client Error
+      </button>
+    </main>
   );
 }
+
