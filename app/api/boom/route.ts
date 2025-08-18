@@ -1,7 +1,11 @@
-import * as Sentry from '@sentry/nextjs';
+// app/api/boom/route.ts
 
-export async function GET() {
-  Sentry.setTag('where', 'api/boom');
-  Sentry.setContext('details', { note: 'Intentional server error for Sentry' });
-  throw new Error('Boom from /api/boom');
+// Keep the route dynamic so it isn't pruned by static optimization
+export const dynamic = 'force-dynamic';
+// Make sure this runs on Node (not Edge), which is safest with Sentry
+export const runtime = 'nodejs';
+
+export async function GET(): Promise<Response> {
+  // For the first test, just prove the route exists:
+  return new Response('ok from /api/boom', { status: 200 });
 }
