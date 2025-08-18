@@ -1,13 +1,17 @@
 // app/api/boom/route.ts
+import * as Sentry from '@sentry/nextjs';
 
-// Make this route always run on request (no build-time prerendering)
+export const runtime = 'nodejs';       // <-- make sure this runs on Node
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-// Ensure it runs on the Node runtime (not Edge)
-export const runtime = 'nodejs';
-
 export async function GET() {
-  // Intentional crash so Sentry captures a server error
-  throw new Error('Boom from /api/boom');
+  try {
+    throw new Error('Boom from /api/boom'); // intentional server error
+  } catch (err) {
+    // send it to Sentry, then rethrow so you still get HTTP 500
+    Sentry.captureException(err as Error);
+    await Sentry.flush(2000);
+    throw err;
+  }
 }
